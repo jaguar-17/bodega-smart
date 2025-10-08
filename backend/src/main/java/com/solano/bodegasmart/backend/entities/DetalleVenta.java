@@ -2,8 +2,11 @@ package com.solano.bodegasmart.backend.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -29,5 +32,13 @@ public class DetalleVenta {
     private BigDecimal precioUnitario;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal total;
+    private BigDecimal subtotal;
+
+    @CreationTimestamp
+    @Column(name = "fecha_creacion", updatable = false, nullable = false)
+    private LocalDateTime fechaCreacion;
+
+    @UpdateTimestamp
+    @Column(name = "fecha_modificacion", nullable = false)
+    private LocalDateTime fechaModificacion;
 }

@@ -1,6 +1,7 @@
 package com.solano.bodegasmart.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.solano.bodegasmart.backend.enums.Estado;
 import com.solano.bodegasmart.backend.enums.Rol;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -28,6 +29,10 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private Rol rolUsuario;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Estado estadoUsuario;
 
     @CreationTimestamp
     @Column(name = "fecha_creacion", updatable = false, nullable = false)

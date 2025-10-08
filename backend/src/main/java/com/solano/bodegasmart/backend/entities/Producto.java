@@ -1,5 +1,6 @@
 package com.solano.bodegasmart.backend.entities;
 
+import com.solano.bodegasmart.backend.enums.Estado;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -32,6 +33,10 @@ public class Producto {
 
     @Column(nullable = false)
     private Integer cantidadProducto;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Estado estadoProducto;
 
     @CreationTimestamp
     @Column(name = "fecha_creacion", updatable = false, nullable = false)

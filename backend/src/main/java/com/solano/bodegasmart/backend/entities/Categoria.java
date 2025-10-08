@@ -1,6 +1,7 @@
 package com.solano.bodegasmart.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.solano.bodegasmart.backend.enums.Estado;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -24,6 +25,10 @@ public class Categoria {
     @JsonIgnore
     @OneToMany(mappedBy = "categoriaProducto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Producto> productos;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Estado estadoCategoria;
 
     @CreationTimestamp
     @Column(name = "fecha_creacion", updatable = false, nullable = false)
